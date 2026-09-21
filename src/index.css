@@ -1,0 +1,461 @@
+@font-face {
+  font-family: "Apple Color Emoji Custom";
+  src: url("https://cdn.jsdelivr.net/gh/samuelngs/apple-emoji-ttf@master/AppleColorEmoji.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --font-body: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Text", sans-serif;
+  --font-title: "Georgia", "Newsreader", -apple-system, serif;
+  --font-emoji:
+    "Apple Color Emoji Custom", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji", sans-serif;
+
+  /* Oura Color Palette from design.md */
+  --bg-gradient-top: #00114f;
+  --bg-dark: #000000;
+  --bg-bottom: #000000;
+
+  --surface-card: #111216;
+  --surface-card-selected: #1a1b22;
+  --surface-dock: rgba(17, 18, 22, 0.96);
+  --surface-drawer: #101115;
+  --surface-input: #15161c;
+  --border-divider: rgba(255, 255, 255, 0.08);
+
+  --text-primary: #f4f1ec;
+  --text-secondary: #9aa0ac;
+  --text-muted: #6b7280;
+  --text-accent-blue: #9caeff;
+  --text-accent-teal: #9caeff;
+
+  --btn-primary-bg: #f4f1ec;
+  --btn-primary-text: #0e1014;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.apple-emoji {
+  font-family: var(--font-emoji) !important;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* App Full Container with Oura Subtle Top Glow Gradient */
+.app-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 100vh;
+  margin: 0 auto;
+  background: radial-gradient(
+    circle at 50% 0%,
+    var(--bg-gradient-top) 0%,
+    var(--bg-dark) 35%,
+    var(--bg-bottom) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .app-wrapper {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* Universal Header */
+.oura-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  width: 100%;
+  z-index: 20;
+}
+
+.oura-header-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.oura-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.15s ease;
+}
+
+.oura-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Large Page Title */
+.oura-screen-title {
+  font-size: 2.2rem;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+/* Secondary Pill Button */
+.oura-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+
+/* Section Label Spacing */
+.section-label {
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-top: 24px;
+  margin-bottom: 10px;
+  padding-left: 2px;
+}
+
+.section-label:first-of-type {
+  margin-top: 8px;
+}
+
+/* Single Grouped Card */
+.oura-card-group {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-card);
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+/* Row Item Inside Grouped Card */
+.oura-card-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: transparent;
+  border: none;
+  width: 100%;
+  color: var(--text-primary);
+  text-align: left;
+  position: relative;
+  transition: background 0.15s ease;
+}
+
+.oura-card-item:not(:last-child) {
+  border-bottom: 1px solid var(--border-divider);
+}
+
+/* Selected Row Highlighted */
+.oura-card-item.selected {
+  background: var(--surface-card-selected);
+}
+
+.oura-card-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.oura-avatar-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-family: var(--font-emoji) !important;
+}
+
+.oura-card-title {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+/* Data Values */
+.oura-card-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Blue Accent Status Text */
+.oura-card-status-blue {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-accent-blue);
+}
+
+.oura-card-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* Primary CTA Cream Pill Button */
+.oura-btn-primary {
+  width: 100%;
+  height: 56px;
+  border-radius: 9999px;
+  border: none;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  font-size: 1.05rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.oura-btn-primary:hover {
+  opacity: 0.95;
+}
+
+.oura-btn-secondary {
+  width: 100%;
+  height: 52px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-divider);
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Floating Bottom Dock Bar */
+.oura-dock-bar {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  right: 20px;
+  background: var(--surface-dock);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 32px;
+  padding: 10px 14px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 30;
+  cursor: pointer;
+}
+
+.oura-dock-drag-handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--text-muted);
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+.oura-dock-controls {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.oura-dock-pill {
+  flex: 1;
+  height: 44px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  gap: 8px;
+}
+
+.oura-dock-pill.outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* AI Chat Drawer */
+.oura-drawer-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.oura-drawer-sheet {
+  width: 100%;
+  height: 88%;
+  background: var(--surface-drawer);
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.oura-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-divider);
+}
+
+.oura-chat-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.oura-msg-bubble-user {
+  align-self: flex-end;
+  max-width: 82%;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+  padding: 14px 20px;
+  border-radius: 22px 22px 4px 22px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.oura-msg-system {
+  align-self: flex-start;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.oura-msg-system-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.oura-msg-system-content {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.oura-chat-footer {
+  padding: 16px 20px 24px 20px;
+  border-top: 1px solid var(--border-divider);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.oura-input-bar {
+  width: 100%;
+  height: 52px;
+  border-radius: 9999px;
+  background: var(--surface-input);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+
+.oura-input-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.oura-input-bar input::placeholder {
+  color: var(--text-muted);
+}
+
+.oura-caption {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

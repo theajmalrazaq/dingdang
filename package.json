@@ -1,0 +1,35 @@
+{
+  "name": "dingdang",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun vite",
+    "build": "tsc && bun vite build",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "tsc",
+    "preview": "bun vite preview"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.48.1",
+    "canvas-confetti": "^1.9.4",
+    "framer-motion": "^13.0.0",
+    "lucide-react": "^0.475.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "swiper": "^14.1.0",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/node": "^22.13.4",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "oxfmt": "^0.63.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.1",
+    "vite-plugin-pwa": "^0.21.1"
+  }
+}
