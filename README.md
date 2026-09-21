@@ -13,7 +13,6 @@ Dingdang delivers a smooth, clean, and engaging party experience — strictly fo
 - **Real-Time Multiplayer Sync**: Instant room updates powered by Supabase Realtime Channels, broadcast events, and presence tracking.
 - **Automated PG Prompt Generation**:
   - Integrated with the free public **TruthOrDareBot API** (enforced `rating=pg`).
-  - Fallback to curated offline libraries with dozens of engaging truths and dares.
 - **Turn Flow & Verification**:
   - Timed player turns with customizable countdowns.
   - Text response and photo proof uploads for dare completion.
@@ -69,13 +68,8 @@ Create a `.env` file in the root directory:
 ```env
 # Supabase Configuration
 VITE_SUPABASE_URL=your_supabase_project_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-
-# Optional: APIVerve API Key (Optional fallback API)
-VITE_APIVERVE_API_KEY=your_apiverve_key
+VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
 ```
-
-> **Note**: Even without API keys configured, Dingdang includes a comprehensive built-in offline prompt engine and works with the free public TruthOrDareBot API.
 
 ### 4. Run the Development Server
 

@@ -60,12 +60,3 @@ export interface ChatMessage {
   image_url?: string;
   created_at?: string;
 }
-
-export interface ApiVerveResponse {
-  status: string;
-  error?: string;
-  data?: {
-    type: "truth" | "dare";
-    prompt: string;
-  };
-}
